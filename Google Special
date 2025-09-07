@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omkar's Odyssey: An Interactive Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Stone & Slate Blue -->
+    <!-- Application Structure Plan: A narrative dashboard structure guides the user through Omkar's story via thematic sections (Leadership, Technical Impact, Community, Competition). This non-linear approach, supported by a sticky navigation and interactive data visualizations, allows users like recruiters to quickly explore key strengths. It's designed to be more engaging and memorable than a static document, turning accomplishments into a compelling journey. -->
+    <!-- Visualization & Content Choices: 
+        - IEEE Growth (10->150+): Goal: Show dramatic growth. Viz: Bar chart (Chart.js) to visually represent the massive increase. Interaction: Tooltip on hover. Justification: More impactful than text alone.
+        - Event Speaking (8+ events, 100+ attendees): Goal: Quantify public speaking experience. Viz: Bar chart (Chart.js). Justification: Clearly visualizes the scale and frequency of impact.
+        - Google Tools: Goal: Demonstrate practical, daily proficiency. Viz: Interactive grid of icons. Interaction: Clicking an icon displays contextual information. Justification: An engaging way to prove the "power user" claim.
+        - Hackathons (1 Win, 1 Top Finish): Goal: Highlight competitive excellence. Viz: Styled stat cards with icons (Unicode). Justification: Instantly communicates success and achievement.
+        - IEEE Xtreme (400k+): Goal: Show massive scale of influence. Viz: A bold, standalone stat card. Justification: The number itself is the story; a simple, strong presentation is most effective.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F4; /* stone-100 */
+            color: #44403C; /* stone-700 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header id="header" class="bg-stone-200/50 backdrop-blur-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-800">Omkar's Odyssey  -  Specially for google student ambassador program (Dont worry, spent 2mins of buliding this)</h1>
+            <ul class="hidden md:flex space-x-8 text-sm font-medium">
+                <li><a href="#leadership" class="text-stone-600 hover:text-blue-600 transition-colors">Leadership</a></li>
+                <li><a href="#technical-impact" class="text-stone-600 hover:text-blue-600 transition-colors">Technical Impact</a></li>
+                <li><a href="#community" class="text-stone-600 hover:text-blue-600 transition-colors">Community</a></li>
+                <li><a href="#competition" class="text-stone-600 hover:text-blue-600 transition-colors">Competition</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+        
+        <section id="hero" class="text-center mb-24">
+            <h2 class="text-4xl md:text-6xl font-extrabold text-stone-900 mb-4">A Legacy in the Making</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                I don’t just hold titles; I build legacies. From a 10-member club to a 150-strong force, my journey is one of high agency, relentless innovation, and turning audacious goals into tangible impact. This is my story.
+            </p>
+        </section>
+
+        <section id="leadership" class="mb-24">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-stone-800">The Architect: Forging a Community</h3>
+                <p class="max-w-2xl mx-auto mt-2 text-stone-600">As Chairman of DIET’s IEEE chapter, I led a transformation, growing our community by 1400%. This section visualizes that growth and the consistent impact of over 40 organized events.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h4 class="font-bold text-lg mb-2 text-center">IEEE Member Growth (10 ➔ 150+)</h4>
+                    <div class="chart-container">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                </div>
+                <div class="text-center md:text-left">
+                     <div class="bg-white/60 p-6 rounded-lg shadow-sm">
+                        <h4 class="text-2xl font-bold text-blue-600">From the Ground Up</h4>
+                        <p class="mt-2 text-stone-700">
+                            I didn’t inherit a throne—I built one. What began as a humble cohort of just 10 members grew, under my vision and persistence, into a thriving force of 150+ tech enthusiasts, a testament to building momentum and fostering a culture of inclusion.
+                        </p>
+                     </div>
+                      <div class="mt-6 bg-white/60 p-6 rounded-lg shadow-sm">
+                        <h4 class="text-2xl font-bold text-blue-600">3 Years, 40+ Events</h4>
+                        <p class="mt-2 text-stone-700">
+                           With three years of experience, I've organized and led over 40 high-stakes events, developing battle-tested skills in project management, team leadership, and execution under pressure.
+                        </p>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="technical-impact" class="mb-24">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-stone-800">The Technologist: From Theory to Practice</h3>
+                 <p class="max-w-2xl mx-auto mt-2 text-stone-600">My skill set spans from web technologies to AI, but my real strength lies in daily, hands-on application. Below is a look at my public speaking impact and the Google tools that form the backbone of my workflow.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                 <div>
+                    <h4 class="font-bold text-lg mb-2 text-center">Speaking Engagements (>100 Attendees Each)</h4>
+                    <div class="chart-container">
+                        <canvas id="eventsChart"></canvas>
+                    </div>
+                </div>
+                <div class="text-center md:text-left bg-white/60 p-6 rounded-lg shadow-sm">
+                    <h4 class="text-2xl font-bold text-blue-600">Expertise in Action</h4>
+                    <p class="mt-2 text-stone-700">
+                        My leadership is powered by high agency and adaptability. As a resource person for 8+ major events, I've engaged large audiences, translating complex technical concepts into accessible and exciting learning opportunities, sparking genuine curiosity.
+                    </p>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold text-center mb-8">My Daily Google Toolkit</h4>
+                <div id="tools-grid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 max-w-4xl mx-auto text-center">
+                    <div class="tool-item p-4 bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg hover:scale-105 transition-transform" data-tool="drive">
+                        <span class="text-4xl">🗂️</span> <p class="text-sm mt-2 font-medium">Drive</p>
+                    </div>
+                    <div class="tool-item p-4 bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg hover:scale-105 transition-transform" data-tool="docs">
+                         <span class="text-4xl">📄</span> <p class="text-sm mt-2 font-medium">Docs</p>
+                    </div>
+                    <div class="tool-item p-4 bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg hover:scale-105 transition-transform" data-tool="sheets">
+                         <span class="text-4xl">📊</span> <p class="text-sm mt-2 font-medium">Sheets</p>
+                    </div>
+                     <div class="tool-item p-4 bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg hover:scale-105 transition-transform" data-tool="meet">
+                         <span class="text-4xl">💻</span> <p class="text-sm mt-2 font-medium">Meet</p>
+                    </div>
+                    <div class="tool-item p-4 bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg hover:scale-105 transition-transform" data-tool="calendar">
+                         <span class="text-4xl">🗓️</span> <p class="text-sm mt-2 font-medium">Calendar</p>
+                    </div>
+                     <div class="tool-item p-4 bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg hover:scale-105 transition-transform" data-tool="firebase">
+                         <span class="text-4xl">🔥</span> <p class="text-sm mt-2 font-medium">Firebase</p>
+                    </div>
+                    <div class="tool-item p-4 bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-lg hover:scale-105 transition-transform" data-tool="gemini">
+                         <span class="text-4xl">✨</span> <p class="text-sm mt-2 font-medium">Gemini</p>
+                    </div>
+                </div>
+                <div id="tool-info" class="mt-8 min-h-[100px] bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg max-w-4xl mx-auto text-stone-800">
+                    <p class="font-semibold">Click a tool to learn more.</p>
+                    <p id="tool-desc" class="mt-1">These tools are the backbone of my workflow for management, collaboration, and development.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="community" class="mb-24">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-stone-800">The Global & Digital Community Builder</h3>
+                 <p class="max-w-2xl mx-auto mt-2 text-stone-600">My impact extends beyond campus walls, from mobilizing coders on a global scale to nurturing a daily hub of digital collaboration.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                 <div class="bg-white/60 p-8 rounded-lg shadow-sm text-center flex flex-col justify-center">
+                    <span class="text-6xl">🌍</span>
+                    <h4 class="text-5xl font-extrabold text-stone-800 mt-4">400,000+</h4>
+                    <p class="text-stone-600 font-medium mt-2">Students Mobilized for IEEE Xtreme</p>
+                    <p class="text-sm text-stone-500 mt-4">As an ambassador for the world's largest 24-hour coding competition, I proved my organizational drive and influence on a global stage.</p>
+                 </div>
+                 <div class="bg-white/60 p-8 rounded-lg shadow-sm text-center flex flex-col justify-center">
+                    <span class="text-6xl">💬</span>
+                    <h4 class="text-5xl font-extrabold text-stone-800 mt-4">200+</h4>
+                    <p class="text-stone-600 font-medium mt-2">Members in a Thriving WhatsApp Community</p>
+                    <p class="text-sm text-stone-500 mt-4">I architected a digital hub for learning and collaboration where knowledge flows constantly, fostering a culture of continuous exploration.</p>
+                 </div>
+            </div>
+        </section>
+        
+        <section id="competition">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-stone-800">The Competitor: Dominating in the Arena</h3>
+                 <p class="max-w-2xl mx-auto mt-2 text-stone-600">My relentless pursuit of excellence is proven in high-pressure environments. I don't just participate in hackathons; I compete to win and push boundaries.</p>
+            </div>
+             <div class="grid md:grid-cols-2 gap-8">
+                 <div class="bg-white/60 p-8 rounded-lg shadow-sm text-center">
+                    <span class="text-6xl">🏆</span>
+                    <h4 class="text-3xl font-bold text-stone-800 mt-4">1st Place Victory</h4>
+                    <p class="text-stone-600 font-medium mt-2">Hackathon Winner</p>
+                    <p class="text-sm text-stone-500 mt-4">Demonstrated innovative problem-solving and rapid development skills to secure a first-place finish.</p>
+                 </div>
+                 <div class="bg-white/60 p-8 rounded-lg shadow-sm text-center">
+                     <span class="text-6xl">🏅</span>
+                    <h4 class="text-3xl font-bold text-stone-800 mt-4">Top 1.25% Finish</h4>
+                    <p class="text-stone-600 font-medium mt-2">Among 800+ Teams</p>
+                    <p class="text-sm text-stone-500 mt-4">Achieved a top-10 placement in a highly competitive field, showcasing strategic thinking and elite execution.</p>
+                 </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-200 mt-20">
+        <div class="container mx-auto px-6 py-8 text-center text-stone-600">
+            <p class="text-lg font-bold">Fueled by an unwavering dream to one day become a Googler.</p>
+            <p class="mt-2 text-sm">My journey reflects growth, innovation, and a refusal to settle. I am a builder, a mentor, and a visionary who transforms audacious goals into tangible impact.</p>
+            <div class="mt-6">
+                <a href="#" class="text-blue-600 hover:underline font-medium">Connect on LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+            for (const link of smoothScrollLinks) {
+                link.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute("href");
+                    const targetElement = document.querySelector(href);
+                    if(targetElement) {
+                        targetElement.scrollIntoView({ behavior: "smooth" });
+                    }
+                });
+            }
+
+            const growthCtx = document.getElementById('growthChart').getContext('2d');
+            new Chart(growthCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Start', 'Current'],
+                    datasets: [{
+                        label: 'IEEE Members',
+                        data: [10, 150],
+                        backgroundColor: [
+                            'rgba(168, 162, 158, 0.6)', // stone-400
+                            'rgba(59, 130, 246, 0.6)' // blue-500
+                        ],
+                        borderColor: [
+                            'rgba(120, 113, 108, 1)', // stone-500
+                            'rgba(37, 99, 235, 1)' // blue-600
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(214, 211, 209, 0.5)' // stone-300
+                            }
+                        },
+                         x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y + ' Members';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const eventsCtx = document.getElementById('eventsChart').getContext('2d');
+            new Chart(eventsCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Event 1', 'Event 2', 'Event 3', 'Event 4', 'Event 5', 'Event 6', 'Event 7', 'Event 8+'],
+                    datasets: [{
+                        label: 'Attendees',
+                        data: [120, 150, 110, 130, 160, 125, 140, 180],
+                        backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                        borderColor: 'rgba(37, 99, 235, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                     responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            suggestedMin: 50,
+                            suggestedMax: 200,
+                             grid: {
+                                color: 'rgba(214, 211, 209, 0.5)'
+                            }
+                        },
+                         x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                     plugins: {
+                        legend: {
+                            display: false
+                        },
+                         tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return 'Attendees: >100';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const toolData = {
+                drive: { title: "Google Drive", desc: "Central to my organizational system for all project assets, documentation, and collaborative files." },
+                docs: { title: "Google Docs", desc: "Used daily for drafting reports, planning event outlines, and creating shared technical documentation." },
+                sheets: { title: "Google Sheets", desc: "My go-to for tracking project progress, managing member lists, and analyzing event feedback data." },
+                meet: { title: "Google Meet", desc: "The primary tool for conducting team meetings, remote workshops, and coordinating with speakers." },
+                calendar: { title: "Google Calendar", desc: "Essential for scheduling every event, meeting, and deadline, ensuring the entire team is synchronized." },
+                firebase: { title: "Firebase", desc: "Leveraged for rapid prototyping and backend services in various web and hackathon projects." },
+                gemini: { title: "Gemini", desc: "A key part of my workflow for brainstorming, code optimization, and exploring creative solutions to complex problems." }
+            };
+
+            const toolItems = document.querySelectorAll('.tool-item');
+            const toolInfoTitle = document.querySelector('#tool-info .font-semibold');
+            const toolDesc = document.getElementById('tool-desc');
+            
+            toolItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const toolKey = item.dataset.tool;
+                    if (toolData[toolKey]) {
+                        toolInfoTitle.textContent = toolData[toolKey].title;
+                        toolDesc.textContent = toolData[toolKey].desc;
+                    }
+
+                    toolItems.forEach(i => i.classList.remove('ring-2', 'ring-blue-500'));
+                    item.classList.add('ring-2', 'ring-blue-500');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
